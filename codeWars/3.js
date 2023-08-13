@@ -12,16 +12,23 @@
 // "   space WALK   " => "   Space Walk   "
 // Note: you will be provided atleast one word and should take string as input and return string as output.
 
-
-let n = "APPLE of banana";
+let n = "APPLEewqqweqwwE#$#$# OOO FFss sAsaADDD of banana";
 function dropCap(n) {
 
-    const words = n.split(" ");
-    const capitalisedWords = words.map(word => {const firstLetter = word.charAt(0).toUpperCase();
+    return n.replace(/\S+/g, (word) => {
+        // Проверяем, если длина слова больше 2 символов
+        if (word.length > 2) {
+            // Получаем первую букву слова в верхнем регистре
+            const firstLetter = word.charAt(0).toUpperCase();
+            // Получаем остальную часть слова в нижнем регистре
             const restOfWord = word.slice(1).toLowerCase();
-        return firstLetter + restOfWord;
-    })
-    return capitalisedWords.join(" ");
-    }
+            // Возвращаем слово с первой буквой в верхнем регистре и остальными буквами в нижнем регистре
+            return firstLetter + restOfWord;
+        }
+        // Если длина слова меньше или равна 2 символам, оставляем его без изменений
+        return word;
+    });
+}
+
 
 console.log(dropCap(n))
